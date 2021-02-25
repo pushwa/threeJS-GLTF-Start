@@ -1,4 +1,4 @@
-# three.js - GLTF Startingpoint
+# three.js - GLTF Start
 
 A starting point for using gltf models in three.
 
