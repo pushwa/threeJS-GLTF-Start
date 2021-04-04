@@ -137,6 +137,9 @@ const params = {
   bloomRadius: 0.33,
 };
 
+init();
+render();
+
 // init
 function init() {
   // Scene
@@ -215,8 +218,8 @@ function init() {
 
       // GLB Model
       const loader = new GLTFLoader();
-      loader.load('gltf/test.glb', function (gltf) {
-        const boxes = gltf.scene.children[0];
+      loader.load('gltf/test.glb', function (glb) {
+        const boxes = glb.scene.children[0];
 
         boxes.getObjectByName('box1').material = material1();
         boxes.getObjectByName('box2').material = material2();
@@ -286,8 +289,11 @@ function init() {
   orbitControls();
 }
 
-// Animate
-function animate(delta) {
+// Render
+function render() {
+  // Animation timeline
+  requestAnimationFrame(render);
+  
   // Resize
   const canvas = renderer.domElement;
   const width = canvas.clientWidth;
@@ -301,9 +307,6 @@ function animate(delta) {
 
     // set render target sizes here
   }
-
-  // Animation timeline
-  requestAnimationFrame(animate);
 
   // Orbit Controls (When damping is on)
   controls.update();
@@ -330,7 +333,3 @@ function animate(delta) {
   // Render scene
   composer.render();
 }
-
-// Invoke
-init();
-animate();
